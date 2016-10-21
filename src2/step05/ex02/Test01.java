@@ -1,0 +1,25 @@
+package step05.ex02;
+
+public class Test01 {
+  public static void main(String[] args) {
+    int no = 1;
+    float kor = 95f;
+    float eng = 100f;
+    float math = 97.5f;
+
+    int bonusScore = 5;
+    kor += bonusScore;
+    eng += bonusScore;
+    math += bonusScore;
+
+    float sum = sum(kor, eng, math);
+    float aver = sum / 3;
+
+    System.out.printf("총점: %f\n", sum);
+    System.out.printf("평균: %f\n", aver);
+  }
+
+  static Float sum(float kor, float eng, float math) {
+    return kor + eng + math;
+  }
+}
