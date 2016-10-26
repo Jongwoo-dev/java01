@@ -7,6 +7,5 @@ public class Test03 {
     Calc2.plus(7);
     Calc2.plus(2);
     System.out.println(Calc2.result);
-
   }
 }

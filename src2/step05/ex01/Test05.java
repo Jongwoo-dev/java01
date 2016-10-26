@@ -2,6 +2,7 @@ package step05.ex01;
 
 public class Test05 {
   public static void main(String[] args) {
+
     Calc4 calcA = new Calc4();
     Calc4 calcB = new Calc4();
 
@@ -17,6 +18,5 @@ public class Test05 {
     System.out.println(calcB.result);
 
     Calc4 calcX = null;
-
   }
 }

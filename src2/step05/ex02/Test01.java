@@ -8,18 +8,22 @@ public class Test01 {
     float math = 97.5f;
 
     int bonusScore = 5;
-    kor += bonusScore;
-    eng += bonusScore;
-    math += bonusScore;
 
-    float sum = sum(kor, eng, math);
-    float aver = sum / 3;
+    addBonus(scores, bonusScore);
+
+
+    float sum = sum(scores);
+    float aver = aver(scores);
 
     System.out.printf("총점: %f\n", sum);
     System.out.printf("평균: %f\n", aver);
   }
 
-  static Float sum(float kor, float eng, float math) {
-    return kor + eng + math;
+  static float sum(float[] scores) {
+    float sum = 0;
+    for (float score : scores) {
+      sum += score;
+    }
+    return sum;
   }
 }

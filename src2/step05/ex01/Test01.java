@@ -15,5 +15,4 @@ public class Test01 {
   static int minus(int a, int b) {
     return a - b;
   }
-
 }

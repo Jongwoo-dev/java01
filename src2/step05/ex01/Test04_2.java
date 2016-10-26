@@ -15,6 +15,5 @@ public class Test04_2 {
     Calc3.minus(calcB, 1);
     System.out.println(calcA.result);
     System.out.println(calcB.result);
-
   }
 }

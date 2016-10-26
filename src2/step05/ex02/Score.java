@@ -8,6 +8,7 @@ public class Score {
     }
     return sum;
   }
+
   static float aver(float[] scores) {
     return sum(scores) / scores.length;
   }
