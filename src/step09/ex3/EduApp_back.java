@@ -3,45 +3,53 @@ package step09.ex3;
 import java.util.Scanner;
 
 public class EduApp {
-  static Scanner keyScan = new Scanner(System.in);
-  static Teacher[] teachers = new Teacher[100];
-  static int length = 0;
-
   public static void main(String[] args) {
     System.out.println();
+    System.out.println("--------------------------------------------");
     System.out.println("비트캠프 관리시스템에 오신걸 환영합니다.");
     System.out.println("명령어 목록 : [ add ] = 항목 추가, [ list ] = 항목 리스트, " +
-      "[ view ] = 항목 상세보기, [ quit ] = 관리 시스템 종료");
+      "[ view ] = 항목 상세보기, [ exit ] = 관리 시스템 종료");
     System.out.println();
 
-    //boolean run = true;
+    Scanner keyScan = new Scanner(System.in);
 
-    loop:
+    Teacher[] teachers = new Teacher[100];
+    int length = 0;
+
     while (true) {
       System.out.print("명령> ");
-      String cmd = keyScan.nextLine().toLowerCase();
+      String cmd = keyScan.nextLine();
 
-      switch (cmd) {
-      case "add": doAdd(); break;
-      case "list": doList(); break;
-      case "view": doView(); break;
-      case "quit": System.out.println("Good bye!"); break loop;
-      default:
-        System.out.println("지원하지 않는 명령어입니다.");
+
+      if (cmd.equals("add")) {
+        System.out.println("--------------------------------------------");
+        addTeacherList(teachers, length++);
+      } else if (cmd.equals("list")) {
+        System.out.println("--------------------------------------------");
+        printTeacherList(teachers, length);
+      } else if (cmd.equals("view")) {
+        System.out.println("--------------------------------------------");
+        viewTeacherList(teachers, length);
+      } else if (cmd.equals("exit")) {
+        System.out.println("--------------------------------------------");
+        System.out.println("비트캠프 관리시스템을 종료합니다.");
+        System.out.println();
+        break;
       }
     }
+
   }
 
-  static void doView() {
+  static void viewTeacherList(Teacher[] teachers, int length) {
     int target = 0;
-    //Scanner keyScan = new Scanner(System.in);
+    Scanner keyScan = new Scanner(System.in);
     System.out.print("강사 아이디? ");
-    String viewId = keyScan.nextLine().toLowerCase();
+    String viewId = keyScan.nextLine();
 
     for (int i = 0; i < length; i++) {
-      if (teachers[i].userId.toLowerCase().equals(viewId)) {
+      if (teachers[i].userId.equals(viewId)) {
         System.out.printf("아이디: %s\n", teachers[i].userId);
-        System.out.printf("암호: (***)\n");
+        System.out.printf("암호: %s\n", teachers[i].password);
         System.out.printf("이름: %s\n", teachers[i].name);
         System.out.printf("이메일: %s\n", teachers[i].email);
         System.out.printf("전화: %s\n", teachers[i].tel);
@@ -50,15 +58,14 @@ public class EduApp {
         System.out.printf("경력: %d\n", teachers[i].carrer);
         System.out.printf("연봉: %d\n", teachers[i].salary);
         System.out.printf("주소: %s\n", teachers[i].address);
-        break;
       }
     }
     System.out.println();
   }
 
-  static void doAdd() {
+  static void addTeacherList(Teacher[] teachers, int length) {
     Teacher teacher = new Teacher();
-    //Scanner keyScan = new Scanner(System.in);
+    Scanner keyScan = new Scanner(System.in);
 
     System.out.print("아이디(예:hong)? ");
     teacher.userId = keyScan.nextLine();
@@ -92,13 +99,12 @@ public class EduApp {
 
     System.out.println();
 
-    teachers[length++] = teacher;
+    teachers[length] = teacher;
   }
 
-  static void doList() {
+  static void printTeacherList(Teacher[] teachers, int length) {
     if (length == 0) {
       System.out.println("리스트가 존재하지 않습니다.");
-      System.out.println();
     } else {
       Teacher teacher;
       for (int i = 0; i < length; i++) {

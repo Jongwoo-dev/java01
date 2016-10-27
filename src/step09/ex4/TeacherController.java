@@ -1,36 +1,11 @@
-package step09.ex3;
+package step09.ex4;
 
 import java.util.Scanner;
 
-public class EduApp {
-  static Scanner keyScan = new Scanner(System.in);
+public class TeacherController {
   static Teacher[] teachers = new Teacher[100];
   static int length = 0;
-
-  public static void main(String[] args) {
-    System.out.println();
-    System.out.println("비트캠프 관리시스템에 오신걸 환영합니다.");
-    System.out.println("명령어 목록 : [ add ] = 항목 추가, [ list ] = 항목 리스트, " +
-      "[ view ] = 항목 상세보기, [ quit ] = 관리 시스템 종료");
-    System.out.println();
-
-    //boolean run = true;
-
-    loop:
-    while (true) {
-      System.out.print("명령> ");
-      String cmd = keyScan.nextLine().toLowerCase();
-
-      switch (cmd) {
-      case "add": doAdd(); break;
-      case "list": doList(); break;
-      case "view": doView(); break;
-      case "quit": System.out.println("Good bye!"); break loop;
-      default:
-        System.out.println("지원하지 않는 명령어입니다.");
-      }
-    }
-  }
+  static Scanner keyScan;
 
   static void doView() {
     int target = 0;
@@ -53,7 +28,6 @@ public class EduApp {
         break;
       }
     }
-    System.out.println();
   }
 
   static void doAdd() {
@@ -90,15 +64,12 @@ public class EduApp {
     System.out.print("주소(예:서울시 서초구 서초동)? ");
     teacher.address = keyScan.nextLine();
 
-    System.out.println();
-
     teachers[length++] = teacher;
   }
 
   static void doList() {
     if (length == 0) {
       System.out.println("리스트가 존재하지 않습니다.");
-      System.out.println();
     } else {
       Teacher teacher;
       for (int i = 0; i < length; i++) {
@@ -115,7 +86,6 @@ public class EduApp {
           teacher.salary,
           teacher.address);
       }
-      System.out.println();
     }
   }
 }
