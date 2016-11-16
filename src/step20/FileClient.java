@@ -27,7 +27,6 @@ public class FileClient {
       long fileSize = file.length();
 
       //서버로 보낼 도구 준비
-      //BufferedOutputStream out0 = new BufferedOutputStream();
       DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
       byte[] bytes = new byte[8192];

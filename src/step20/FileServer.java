@@ -23,7 +23,6 @@ public class FileServer {
         System.out.println("클라이언트와 연결되었습니다. -----------------------------");
         
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        //PrintStream out = new PrintStream(socket.getOutputStream());
         
         // 파일 정보를 읽어온다.
         fileSize = in.readLong();
@@ -33,11 +32,9 @@ public class FileServer {
         // 파일 쓰기 도구 준비
         FileOutputStream out = new FileOutputStream(fileName);
 
-        byte[] bytes = new byte[8192];
-        int len = 0;
-        while ((len = in.read(bytes)) > 0) {  //받은 내용에서 읽을 내용이 없을때까지 반복
-          out.write(bytes, 0, len);  //읽은 만큼 파일에 씀
-        }
+        byte[] bytes = new byte[(int)fileSize];
+        in.readFully(bytes);
+        out.write(bytes);
         
         System.out.println("파일 다운로드 완료.");
         
