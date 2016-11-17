@@ -1,6 +1,6 @@
 /* 주제: 미니 웹 브라우저 만들기 
  */
-package step20;
+package step20.ex1;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Exam105_0 {
+public class MiniWebBrowser {
   public static void main(String[] args) throws Exception {
     // Data Sink Stream 객체 준비 = 랜카드를 통해 데이터를 입출력
     // 1) 랜카드 접속 객체 준비

@@ -1,13 +1,13 @@
 /* 주제: 네트워킹 프로그래밍 - echo server 만들기 
  */
-package step20;
+package step20.ex2;
 
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Exam105_3 {
+public class EchoServer {
   public static void main(String[] args) throws Exception {
     // 클라이언트 요청을 기다리는 랜카드 접속 객체 준비
     ServerSocket ss = new ServerSocket(8888);
