@@ -55,11 +55,12 @@ public class PsyTestServer {
 
         if (cursor.yes == null) { //현재 커서가 결과노드면
           //결과를 출력하고 반복문 종료
-          out.println("결과 : [ " + cursor + " ]");
           out.println("quit");
+          out.println("결과 : [ " + cursor + " ]");
           break;
         }
 
+        out.println("text");
         out.println(cursor + "(y/n) "); //질문 보내기
         loop:
           while (true) {  //제대로된 메시지를 받을때까지 반복
@@ -72,6 +73,7 @@ public class PsyTestServer {
               cursor = cursor.no;
               break loop;
             default:
+              out.println("text");
               out.println("잘못된 답변입니다.(y/n)");
               break;
             }
@@ -88,7 +90,7 @@ public class PsyTestServer {
     for (int i = 0; i < 31; i++) {
       items[i] = new Item();
     }
-
+    
     items[0].setItem("정장보다는 캐주얼타입을 좋아한다.", items[5],items[1]);
     items[1].setItem("학교나 직장에서 선배들에게 귀여움을 받는 편이다.",items[6],items[2]);
     items[2].setItem("자기자신이 정신적으로 약하다고 느낄 때가 많다.",items[7],items[3]);

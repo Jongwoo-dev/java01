@@ -24,17 +24,25 @@ public class PsyTestClient {
       System.out.print("이름? ");
       out.println(keyScan.nextLine());
       System.out.println(in.nextLine());  //환영메시지
+      
+      loop:
       while (true) {
         String recvMsg = in.nextLine();
-        if (recvMsg.toLowerCase().equals("quit")) {
-          //quit 받으면 종료
+        switch (recvMsg.toLowerCase()) {
+        case "text":
+          recvMsg = in.nextLine();
+          System.out.print(recvMsg + " ");    //받은 질문 출력
+          out.println(keyScan.nextLine());
           break;
-        }
-        System.out.print(recvMsg + " ");    //받은 질문 출력
-        out.println(keyScan.nextLine());
-        
+        case "quit":
+          //quit 받으면 결과 출력 후 
+          recvMsg = in.nextLine();
+          System.out.println(recvMsg);    //결과 출력
+          break loop;
+        default:
+          break;
+        } 
       }
-      
     } catch (NoSuchElementException e) {
       // 결과받은이후?
     } catch (Exception e) {
