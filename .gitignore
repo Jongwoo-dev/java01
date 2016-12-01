@@ -1,3 +1,9 @@
 /bin/
 /bin2/
 /upload/
+
+/.gradle/
+/.settings/
+/.classpath
+/.project
+/*.log

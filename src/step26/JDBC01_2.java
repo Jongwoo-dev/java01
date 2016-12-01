@@ -1,4 +1,4 @@
-/* 주제: DBMS 에 연결하기
+/* 주제: DBMS 에 연결하기 II
  * => 조건
  *    1) DBMS가 설치되어 있어야 한다.
  *    2) DBMS 서버가 실행되고 있다.
@@ -15,17 +15,15 @@ package step26;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class JDBC01_1 {
+public class JDBC01_2 {
 
   public static void main(String[] args) throws Exception {
-    // 1) java.sql.Driver를 구현한 클래스 객체를
-    //    JDBC 드라이버 관리자에게 등록해야 한다.
-    DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-
-    // 2) java.sql.Driver 구현체(com.mysql.jdbc.Driver 객체)에게 DBMS와 연결하라고 요청한다.
-    //    그러나 직접 이 객체를 사용하여 DBMS에 연결하지 않는다.
-    //    대신 JDBC 드라이버 관리자에게 대행시킨다.
-    //    => 리턴 값은 DBMS와 연결된 정보(java.sql.Connection 구현체)이다.
+    // 1) java.sql.Driver를 구현한 클래스 로딩
+    Class.forName("com.mysql.jdbc.Driver");
+    
+    // 2) DriverManager는 위에서 로딩한 java.sql.Driver 구현체를 자동으로 찾는다.
+    //    => 그리고 그 구현체의 인스턴스를 자동으로 생성한다.
+    //    => 생성한 인스턴스를 통해 java.sql.Connection 구현체를 얻는다.
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java89db", "java89", "1111");
 
     // 정상적으로 DBMS에 연결되었다면 예외가 발생하지 않고 리턴될 것이다.
