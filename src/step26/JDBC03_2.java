@@ -29,7 +29,6 @@ import java.util.Scanner;
 public class JDBC03_2 {
 
   public static void main(String[] args) throws Exception {
-
     Class.forName("com.mysql.jdbc.Driver");
     try (
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java89db", "java89", "1111");
